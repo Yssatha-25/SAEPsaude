@@ -1,4 +1,4 @@
-const pool = require("../db.js");
+const pool = require("../db");
 
 const status = async (req, res) => {
     try{
@@ -19,6 +19,4 @@ const status = async (req, res) => {
     }
 };
 
-module.exports = {
-    status
-};
+module.exports = { status };
