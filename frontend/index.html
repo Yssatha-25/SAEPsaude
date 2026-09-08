@@ -1,30 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAEP Saude</title>
-    <link rel="stylesheet" href="style.css"></link>
+    <link rel="stylesheet" href="style.css">
+    </link>
 </head>
+
 <body>
-    <div class="container">
-        <aside id="perfil">
-            <div id="logo">
-                <img src="https://ava.sesisenai.org.br/pluginfile.php/1/theme_senai/logocompact/300x300/1787916997/logo-nova.png" alt="logo do SAEP Saúde">
-            </div>
-
-            <h1>SAEP Saúde</h1>
-
+    <header id="cabecalho">
+        <div id="logo">
+            <img src="https://sc.ead.senai.br/pluginfile.php/1/theme_sctec/logocompact/300x300/1788866489/sketch%281%29.png"
+                alt="logo do SAEP Saúde">
             <p id="descricao-empresa">Rede de atividades físicas</p>
-
+        </div>
+        <button id="botao-login-logout">Logout</button>
+    </header>
+    
+    <div id="conteudo">
+        <aside id="perfil">
             <div id="perfil-info">
-                <div>
-                    <strong>20</strong>
-                    <span>atividades</span>
+                <h3>Nome completo do usuário</h3>
+                <img id="foto-perfil" src="" alt="foto do usuário">
+                <div id="qntd-atividades-perfil">
+                    <strong>1</strong>
+                    <p>atividades</p>
+                </div>
+                <div id="qntd-calorias-perfil">
+                    <strong>500</strong>
+                    <p>calorias</p>
+                </div>
+                <div id="atividades-perfil">
+                    <h3>Atividades</h3>
+                    <div class="atvd-perfil">
+                        <img src="" alt="imagem da atividade">
+                        <p id="descricao-atvd-perfil">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
+                            odio
+                            necessitatibus neque molestiae perspiciatis alias. Eius eos optio impedit hic, veniam ullam,
+                            id
+                            quam
+                            exercitationem rerum beatae magni, itaque possimus!</p>
+                        <p id="tipo-atvd-perfil"><strong>corrida</strong></p>
+                        <p id="duracao-atvd-perfil"><strong>duração:</strong> 1 hora</p>
+                        <p id="duracao-atvd-perfil"><strong>distância percorrida:</strong> 2 km</p>
+                        <p id="data-atividade"><strong>data:</strong> 23/05/2026</p>
+                    </div>
                 </div>
             </div>
+
         </aside>
 
+        <main class="container">
+            <div class="card-post">
+                <div id="imagem-post">
+                    <img src="" alt="imagem do post">
+                </div>
+
+                <div class="conteudo-post">
+                    <strong id="nome-usuario-post">@nome_usuario</strong>
+                    <p id="descricao-atvd-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa odio
+                        necessitatibus neque molestiae perspiciatis alias. Eius eos optio impedit hic, veniam ullam, id
+                        quam
+                        exercitationem rerum beatae magni, itaque possimus!</p>
+                    <p id="tipo-atvd-post"><strong>corrida</strong></p>
+                    <p id="duracao-atvd-post"><strong>duração:</strong> 20 min</p>
+                    <p id="duracao-atvd-post"><strong>distância percorrida:</strong> 5 km</p>
+                    <p id="data-atividade"><strong>data:</strong> 08/09/2026</p>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
+
 </html>
