@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    align-content: center;
 }
 #conteudo{
     display: flex;
@@ -42,4 +43,46 @@
     background-color: #333333;
     color: #FFFFFF;
     padding: 2vw;
+    max-width: 30vw;
+    justify-items: center;
+}
+#perfil-info{   
+    text-align: center;
+}
+#atividades-perfil{
+    justify-items: center;
+    padding: 1vw;
+}
+#card-atvd-perfil{
+    text-align: center;
+}
+#card-atvd-perfil>img{
+    max-width: 20vw;
+}
+#card-atvd-perfil>p{
+    text-align: left;
+}
+
+#qntds{
+    display: flex;
+    justify-content: space-between;
+}
+#card-post{
+    background-color: #FFFFFF;
+    display: flex;
+    padding: 2vw;
+}
+#imagem-post>img{
+    max-width: 20vw;
+}
+main{
+    background-color: #483DAD;
+    padding: 5vw;
+}
+
+footer{
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 10vh 0;
+    max-height: 5vh;
 }
