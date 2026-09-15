@@ -19,6 +19,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
 #logo{
     display: flex;
     flex-direction: column;
@@ -27,6 +28,7 @@
 #logo>img{
     max-height: 8vh;
 }
+
 #botao-login-logout{
     background-color: #483DAD;
     padding: 2vh 4vw;
@@ -39,45 +41,84 @@
     background-color: rgb(102, 88, 233);
 }
 
-#perfil{
+aside{
     background-color: #333333;
     color: #FFFFFF;
     padding: 2vw;
     max-width: 30vw;
+    display: grid;
+    row-gap: 20vh;
     justify-items: center;
+    align-content: flex-start;
+}
+#perfil-foto{
+    border-radius: 50px;
+    max-width: 5vw;
 }
 #perfil-info{   
     text-align: center;
+    display: flex;
 }
-#atividades-perfil{
-    justify-items: center;
-    padding: 1vw;
-}
-#card-atvd-perfil{
+#perfil-qntds{
+    display: flex;
+    gap: 5vw;
     text-align: center;
 }
-#card-atvd-perfil>img{
-    max-width: 20vw;
+#perfil-btn-criar-atvd{
+    background-color: #483DAD;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    width: 15vw;
+    height: 7vh;
+    cursor: pointer;
 }
-#card-atvd-perfil>p{
-    text-align: left;
+#perfil-btn-criar-atvd:hover{
+    background-color: rgb(102, 88, 233);    
 }
 
-#qntds{
+main{
+    background-color: #483DAD;
+    padding: 4vw;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 4vh;
 }
-#card-post{
+
+.card-post{
     background-color: #FFFFFF;
     display: flex;
     padding: 2vw;
+    border-radius: 5px;
+    max-width: 80vw;
 }
-#imagem-post>img{
-    max-width: 20vw;
+.foto-perfil-post>img{
+    border-radius: 200px;
+    max-width: 8vw;
 }
-main{
-    background-color: #483DAD;
-    padding: 5vw;
+
+.conteudo-post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1vh;
+}
+.conteudo-post>li{
+    display: flex;
+    gap: 8px;
+}
+.conteudo-post > li > ul:not(:first-child)::before {
+    content: "•";
+    margin-right: 8px;
+}
+.coments-likes-post{
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
+}
+#paginacao{
+    display: flex;
 }
 
 footer{
