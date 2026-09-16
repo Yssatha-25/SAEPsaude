@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAEP Saude</title>
-    <link rel="stylesheet" href="style.css">
-    </link>
+    <link rel="stylesheet" href="style.css"></link>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -44,111 +44,16 @@
         </aside>
 
         <main>
-            <div class="card-post">
-                <div class="foto-perfil-post">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                        alt="imagem do post">
-                </div>
-
-                <div class="conteudo-post">
-                    <p><strong>corrida</strong></p>
-                    <p>@nome_usuario</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa odio
-                        necessitatibus neque molestiae perspiciatis alias. Eius eos optio impedit hic, veniam ullam, id
-                    </p>
-                    <li>
-                        <ul>4.0 km</ul>
-                        <ul>40 min</ul>
-                        <ul>180 calorias</ul>
-                    </li>
-                </div>
-
-                <div class="coments-likes-post">
-                    <p><span class="icone-curtida">&#10084;</span> 15</p>
-                    <p><span class="icone-comentario">&#128172;</span> 4</p>
-                </div>
+            <div id="filtros">
+                <button data-tipo="corrida">Corrida</button>
+                <button data-tipo="caminhada">Caminhada</button>
+                <button data-tipo="trilha">Trilha</button>
+                <button data-tipo="">Todos</button>
             </div>
-            <div class="card-post">
-                <div class="foto-perfil-post">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                        alt="imagem do post">
-                </div>
-
-                <div class="conteudo-post">
-                    <p><strong>corrida</strong></p>
-                    <p>@nome_usuario</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa odio
-                        necessitatibus neque molestiae perspiciatis alias. Eius eos optio impedit hic, veniam ullam,
-                        id
-                    </p>
-                    <li>
-                        <ul>4.0 km</ul>
-                        <ul>40 min</ul>
-                        <ul>180 calorias</ul>
-                    </li>
-                </div>
-
-                <div class="coments-likes-post">
-                    <p><span class="icone-curtida">&#10084;</span> 15</p>
-                    <p><span class="icone-comentario">&#128172;</span> 4</p>
-                </div>
-            </div>
-            <div class="card-post">
-                <div class="foto-perfil-post">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                        alt="imagem do post">
-                </div>
-
-                <div class="conteudo-post">
-                    <p><strong>corrida</strong></p>
-                    <p>@nome_usuario</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa odio
-                        necessitatibus neque molestiae perspiciatis alias. Eius eos optio impedit hic, veniam
-                        ullam, id
-                    </p>
-                    <li>
-                        <ul>4.0 km</ul>
-                        <ul>40 min</ul>
-                        <ul>180 calorias</ul>
-                    </li>
-                </div>
-
-                <div class="coments-likes-post">
-                    <p><span class="icone-curtida">&#10084;</span> 15</p>
-                    <p><span class="icone-comentario">&#128172;</span> 4</p>
-                </div>
-            </div>
-            <div class="card-post">
-                <div class="foto-perfil-post">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                        alt="imagem do post">
-                </div>
-
-                <div class="conteudo-post">
-                    <p><strong>corrida</strong></p>
-                    <p>@nome_usuario</p>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa odio
-                        necessitatibus neque molestiae perspiciatis alias. Eius eos optio impedit hic,
-                        veniam ullam, id
-                    </p>
-                    <li>
-                        <ul>4.0 km</ul>
-                        <ul>40 min</ul>
-                        <ul>180 calorias</ul>
-                    </li>
-                </div>
-                <div class="coments-likes-post">
-                    <p><span class="icone-curtida">&#10084;</span> 15</p>
-                    <p><span class="icone-comentario">&#128172;</span> 4</p>
-                </div>
-            </div>
-            <div id="paginacao">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-            </div>
+        
+            <div id="lista-atividades"></div>
+        
+            <div id="paginacao"></div>
         </main>
     </div>
 

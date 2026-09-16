@@ -35,6 +35,16 @@ const atividades = async (req, res) => {
 
         const resultado = await pool.query(consulta, valores);
 
+        // NOVO: contar o total (sem LIMIT/OFFSET), respeitando o mesmo filtro
+        let consultaTotal = `SELECT COUNT(*) AS total FROM atividades`;
+        const valoresTotal = [];
+        if (tipo) {
+            consultaTotal += ` WHERE LOWER(tipo_atividade) = LOWER($1)`;
+            valoresTotal.push(tipo);
+        }
+        const totalResultado = await pool.query(consultaTotal, valoresTotal);
+        const total = Number(totalResultado.rows[0].total);
+
         const atividades = resultado.rows.map((atividade) => {
             const data = new Date(atividade.data_atividade);
 
@@ -54,6 +64,7 @@ const atividades = async (req, res) => {
         res.json({
             pagina: pagina,
             quantidade: atividades.length,
+            total: total,
             atividades: atividades
         });
 
