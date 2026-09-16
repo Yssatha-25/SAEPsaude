@@ -114,11 +114,28 @@ main{
 }
 .coments-likes-post{
     display: flex;
-    justify-content: space-between;
-    align-content: flex-end;
+    justify-content: flex-end;
+    gap: 1vw;
+    margin-left: auto;
+    align-self: flex-end;    
 }
 #paginacao{
     display: flex;
+    gap: 5vh;
+    justify-content: center;
+}
+#paginacao>button{
+    width: 3vw;
+    height: 5vh;
+    border-radius: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #000000;
+    cursor: pointer;
+}
+#paginacao>button:hover{
+    background-color: rgb(102, 88, 233);
+    color: #FFFFFF;
 }
 
 footer{
