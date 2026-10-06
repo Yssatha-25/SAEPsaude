@@ -7,12 +7,17 @@ const PORT = 3000;
 const statusRoute = require("./routes/statusRoute");
 const empresaRoute = require("./routes/empresaRoute");
 const atividadesRoute = require("./routes/atividadesRoutes");
+const loginRoute = require("./routes/loginRoute");
+const interacoesRoute = require("./routes/interacoesRoute");
 
 app.use(cors());
 app.use(express.json());
+
 app.use(statusRoute);
 app.use(empresaRoute);
 app.use(atividadesRoute);
+app.use(loginRoute);
+app.use(interacoesRoute);
 
 app.get("/", (req, res) =>{
     res.json({
