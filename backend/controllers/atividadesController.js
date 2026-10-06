@@ -81,6 +81,50 @@ const atividades = async (req, res) => {
     }
 };
 
+const criar = async (req, res) => {
+    try {
+        const {
+            usuario_id,
+            tipo,
+            distancia,
+            duracao
+        } = req.body;
+        const tiposValidos = ["corrida", "caminhada", "trilha"];
+
+        if (!usuario_id || !tiposValidos.includes(String(tipo).toLowerCase()) ||
+            !(Number(distancia) > 0) || !(Number(duracao) > 0)) {
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: "Dados inválidos."
+            });
+        }
+
+        const km = Number(distancia) / 1000; // metros -> km
+        const fator = {
+            corrida: 60,
+            caminhada: 40,
+            trilha: 70
+        }; // kcal por km (valor de exemplo)
+        const calorias = Math.round(km * fator[tipo.toLowerCase()]);
+
+        await pool.query(
+            `INSERT INTO atividades (usuario_id, tipo_atividade, distancia_km, duracao_min, calorias, data_atividade, descricao)
+             VALUES ($1, $2, $3, $4, $5, NOW(), $6)`,
+            [usuario_id, tipo.toLowerCase(), km, Number(duracao), calorias, tipo]
+        );
+
+        res.status(201).json({
+            sucesso: true
+        });
+    } catch (erro) {
+        res.status(500).json({
+            sucesso: false,
+            mensagem: "Erro ao criar atividade.",
+            erro: erro.message
+        });
+    }
+};
+
 module.exports = {
     atividades
 };
