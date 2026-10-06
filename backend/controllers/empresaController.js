@@ -1,17 +1,24 @@
 const pool = require("../db");
 
 const empresa = async (req, res) => {
-    try{
-        const resultado = await pool.query(
-            "select count (*) as total_atividades from atividades"
-        );
+    try {
+        const dadosEmpresa = await pool.query("SELECT nome, logo FROM empresa LIMIT 1");
+
+        let sql = "SELECT COUNT(*) AS total_atividades, COALESCE(SUM(calorias),0) AS total_calorias FROM atividades";
+        const valores = [];
+        if (req.query.usuario_id) {
+            sql += " WHERE usuario_id = $1";
+            valores.push(req.query.usuario_id);
+        }
+        const totais = await pool.query(sql, valores);
 
         res.json({
-            nome: "SAEP Saúde",
-            logo: "https://ava.sesisenai.org.br/pluginfile.php/1/theme_senai/logocompact/300x300/1787916997/logo-nova.png",
-            total_atividades: Number(resultado.rows[0].total_atividades)
+            nome: dadosEmpresa.rows[0].nome,
+            logo: dadosEmpresa.rows[0].logo,
+            total_atividades: Number(totais.rows[0].total_atividades),
+            total_calorias: Number(totais.rows[0].total_calorias)
         });
-    } catch (erro){
+    } catch (erro) {
         res.status(500).json({
             sucesso: false,
             mensagem: "Erro ao buscar os dados da empresa.",
@@ -20,4 +27,6 @@ const empresa = async (req, res) => {
     }
 };
 
-module.exports = { empresa };
+module.exports = {
+    empresa
+};
