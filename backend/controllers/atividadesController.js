@@ -1,33 +1,35 @@
 const pool = require("../db");
 
 const atividades = async (req, res) => {
-    try{
+    try {
         const pagina = Number(req.query.page) || 1;
         const limite = 4;
         const offset = (pagina - 1) * limite;
 
-        const tipo = req.query.tipo
+        const tipo = req.query.tipo;
+
+        const usuarioLogado = Number(req.query.usuario_id) || 0;
 
         let consulta = `
             SELECT
-                id_atividade,
-                usuario_id,
-                tipo_atividade,
-                distancia_km,
-                duracao_min,
-                data_atividade,
-                descricao
-            FROM atividades
+                a.id_atividade, a.usuario_id, a.tipo_atividade, a.distancia_km,
+                a.duracao_min, a.calorias, a.data_atividade, a.descricao,
+                u.nome AS nome_usuario, u.foto AS foto_usuario,
+                (SELECT COUNT(*) FROM curtidas c WHERE c.atividade_id = a.id_atividade) AS total_curtidas,
+                (SELECT COUNT(*) FROM comentarios m WHERE m.atividade_id = a.id_atividade) AS total_comentarios,
+                EXISTS (SELECT 1 FROM curtidas c WHERE c.atividade_id = a.id_atividade AND c.usuario_id = $1) AS curtiu
+            FROM atividades a
+            JOIN usuarios u ON u.id_usuario = a.usuario_id
         `;
 
-        const valores = [];
+        const valores = [usuarioLogado];
 
         if (tipo) {
-            consulta += ` WHERE LOWER(tipo_atividade) = LOWER($1)`;
+            consulta += ` WHERE LOWER(a.tipo_atividade) = LOWER($2) `;
             valores.push(tipo);
         }
 
-        consulta += ` ORDER BY data_atividade DESC
+        consulta += ` ORDER BY a.data_atividade DESC, a.id_atividade DESC
                       LIMIT $${valores.length + 1}
                       OFFSET $${valores.length + 2}`;
 
@@ -79,4 +81,6 @@ const atividades = async (req, res) => {
     }
 };
 
-module.exports = { atividades };
+module.exports = {
+    atividades
+};
