@@ -101,12 +101,12 @@ const criar = async (req, res) => {
 
         const km = Number(distancia) / 1000; // metros -> km
         const fator = {
-            corrida: 60,
-            caminhada: 40,
-            trilha: 70
-        }; // kcal por km (valor de exemplo)
-        const calorias = Math.round(km * fator[tipo.toLowerCase()]);
-
+            corrida: 10,
+            caminhada: 5,
+            trilha: 7
+        }; // kcal por minuto
+        const calorias = Math.round(Number(duracao) * fator[tipo.toLowerCase()]);
+        
         await pool.query(
             `INSERT INTO atividades (usuario_id, tipo_atividade, distancia_km, duracao_min, calorias, data_atividade, descricao)
              VALUES ($1, $2, $3, $4, $5, NOW(), $6)`,
