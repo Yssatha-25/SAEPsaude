@@ -1,15 +1,20 @@
-*{
+* {
     font-family: "Segoe UI", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     align-content: center;
 }
-#conteudo{
+
+[hidden] {
+    display: none !important;
+}
+
+#conteudo {
     display: flex;
 }
 
-#cabecalho{
+#cabecalho {
     background-color: #000000;
     color: #FFFFFF;
     width: 100%;
@@ -20,16 +25,17 @@
     align-items: center;
 }
 
-#logo{
+#logo {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-#logo>img{
+
+#logo>img {
     max-height: 8vh;
 }
 
-#botao-login-logout{
+#botao-login-logout {
     background-color: #483DAD;
     padding: 2vh 4vw;
     color: #FFFFFF;
@@ -37,34 +43,40 @@
     border-radius: 5px;
     cursor: pointer;
 }
-#botao-login-logout:hover{
-    background-color: rgb(102, 88, 233);
+
+#botao-login-logout:hover {
+    background-color: #6657ee;
 }
 
-aside{
+aside {
     background-color: #333333;
     color: #FFFFFF;
     padding: 2vw;
-    max-width: 30vw;
+    width: 25vw;
+    flex-shrink: 0;
     display: grid;
     row-gap: 20vh;
     justify-items: center;
     align-content: flex-start;
 }
-#perfil-foto{
+
+#perfil-foto {
     border-radius: 50px;
     max-width: 5vw;
 }
-#perfil-info{   
+
+#perfil-info {
     text-align: center;
     display: flex;
 }
-#perfil-qntds{
+
+#perfil-qntds {
     display: flex;
     gap: 5vw;
     text-align: center;
 }
-#perfil-btn-criar-atvd{
+
+#perfil-btn-criar-atvd {
     background-color: #483DAD;
     color: #FFFFFF;
     border: none;
@@ -73,29 +85,32 @@ aside{
     height: 7vh;
     cursor: pointer;
 }
-#perfil-btn-criar-atvd:hover{
-    background-color: rgb(102, 88, 233);    
+
+#perfil-btn-criar-atvd:hover {
+    background-color: #6657ee;
 }
 
-main{
+main {
     background-color: #483DAD;
     padding: 4vw;
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    min-width: 75vw;
+    flex: 1;
+    min-width: 0;
 }
 
 .card-post {
-    background-color: #FFFFFF;
+    background-color: #333333;
+    color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2vw;
     border-radius: 5px;
     max-width: 80vw;
-    width: 100%; 
-}   
+    width: 100%;
+}
 
 .conteudo-post {
     display: flex;
@@ -106,17 +121,18 @@ main{
     flex-grow: 1;
 }
 
-.foto-perfil-post>img{
+.foto-perfil-post>img {
     border-radius: 200px;
     max-width: 8vw;
 }
 
-.conteudo-post>ul{
+.conteudo-post>ul {
     display: flex;
     gap: 8px;
     list-style: none;
 }
-.conteudo-post > ul > li:not(:first-child)::before {
+
+.conteudo-post>ul>li:not(:first-child)::before {
     content: "•";
     margin-right: 8px;
     list-style: none;
@@ -126,22 +142,24 @@ main{
     display: flex;
     justify-content: flex-end;
     gap: 1vw;
-    align-self: flex-end;    
+    align-self: flex-end;
 }
 
 
-#lista-atividades{
+#lista-atividades {
     display: flex;
     flex-direction: column;
     gap: 5vh;
 }
-#paginacao{
+
+#paginacao {
     display: flex;
     gap: 5vh;
     justify-content: center;
 }
-#paginacao>button{
-    width: 3vw;
+
+#paginacao>button {
+    padding: 0 1vw;
     height: 5vh;
     border-radius: 5px;
     border: none;
@@ -149,17 +167,20 @@ main{
     color: #000000;
     cursor: pointer;
 }
-#paginacao>button:hover{
-    background-color: rgb(102, 88, 233);
+
+#paginacao>button:hover {
+    background-color: #6657ee;
     color: #FFFFFF;
 }
 
-#filtros{
+#filtros {
     display: flex;
     gap: 1vw;
     margin-bottom: 2vh;
+    justify-content: center;
 }
-#filtros>button{
+
+#filtros>button {
     background-color: #FFFFFF;
     color: #000000;
     border: none;
@@ -168,17 +189,135 @@ main{
     height: 5vh;
     cursor: pointer;
 }
-#filtros>button:hover{
-    background-color: rgb(102, 88, 233);
-    color: #FFFFFF;
-}
-#filtros>button.ativo,
-#paginacao>button.ativo{
-    background-color: rgb(102, 88, 233);
+
+#filtros>button:hover {
+    background-color: #6657ee;
     color: #FFFFFF;
 }
 
-footer{
+#filtros>button.ativo,
+#paginacao>button.ativo {
+    background-color: #6657ee;
+    color: #FFFFFF;
+}
+
+.btn-curtir,
+.btn-comentar {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.icone-curtida,
+.icone-comentario {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+}
+
+.icone-curtida {
+    mask-image: url("img/coracao.svg");
+    -webkit-mask-image: url("img/coracao.svg");
+}
+
+.icone-curtida.curtido {
+    background-color: #FF0000;
+}
+
+.icone-comentario {
+    mask-image: url("img/chat.svg");
+    -webkit-mask-image: url("img/chat.svg");
+}
+
+.area-comentario {
+    width: 100%;
+    display: flex;
+    gap: 1vw;
+    margin-top: 2vh;
+    flex-wrap: wrap;
+}
+
+.area-comentario input {
+    flex: 1;
+    padding: 1vh;
+}
+
+#modal-login {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-login {
+    background: #FFFFFF;
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    min-width: 25vw;
+}
+
+#cancelar-login {
+    background: none;
+    border: 1px solid #333333;
+}
+
+#confirmar-login {
+    background: #333333;
+    color: #FFFFFF;
+    border: none;
+}
+
+input.invalido {
+    border: 2px solid #FF0000;
+}
+
+.erro {
+    color: #FF0000;
+}
+
+#form-atividade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+    color: #FFFFFF;
+}
+
+#form-criar {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    min-width: 30vw;
+}
+
+#form-criar button {
+    background: #333333;
+    color: #FFFFFF;
+    border: none;
+    padding: 2vh;
+    cursor: pointer;
+}
+
+#paginacao>button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+footer {
     background-color: #000000;
     color: #FFFFFF;
     padding: 10vh 0;

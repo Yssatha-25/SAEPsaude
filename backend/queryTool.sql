@@ -107,4 +107,4 @@ SELECT setval(pg_get_serial_sequence('atividades', 'id_atividade'), (SELECT MAX(
 
 -- Conferência
 SELECT (SELECT COUNT(*) FROM usuarios) AS usuarios,
-       (SELECT COUNT(*) FROM atividades) AS atividades;
+(SELECT COUNT(*) FROM atividades) AS atividades;

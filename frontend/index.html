@@ -5,42 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAEP Saude</title>
-    <link rel="stylesheet" href="style.css"></link>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="./style.css"></link>
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
     <header id="cabecalho">
-        <div id="logo">
-            <img src="https://sc.ead.senai.br/pluginfile.php/1/theme_sctec/logocompact/300x300/1788866489/sketch%281%29.png"
-                alt="logo do SAEP Saúde">
-            <p id="descricao-empresa">Rede de atividades físicas</p>
-        </div>
-        <button id="botao-login-logout">Logout</button>
+        <button id="botao-login-logout">Login</button>
     </header>
 
     <div id="conteudo">
         <aside>
-            <div id="perfil-info">
+            <div id="perfil-empresa">
+                <img id="empresa-logo" src="./img/logo.png" alt="logo da empresa">
+                <h2 id="empresa-nome"></h2>
+            </div>
+            <div id="perfil-info" hidden>
                 <img id="perfil-foto"
                     src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
                     alt="foto do usuário">
-                <h3>Nome completo do usuário</h3>
+                <h3 id="perfil-nome"></h3>
             </div>
 
             <div id="perfil-qntds">
                 <div id="qntd-atividades">
-                    <strong>1</strong>
+                    <strong id="total-atividades"></strong>
                     <p>atividades</p>
                 </div>
 
                 <div id="qntd-calorias">
-                    <strong>500</strong>
+                    <strong id="total-calorias"></strong>
                     <p>calorias</p>
                 </div>
             </div>
 
-            <button id="perfil-btn-criar-atvd">Criar atividade</button>
+            <button id="perfil-btn-criar-atvd" disabled>Atividades</button>
         </aside>
 
         <main>
@@ -48,17 +47,55 @@
                 <button data-tipo="corrida">Corrida</button>
                 <button data-tipo="caminhada">Caminhada</button>
                 <button data-tipo="trilha">Trilha</button>
-                <button data-tipo="">Todos</button>
             </div>
-        
+
             <div id="lista-atividades"></div>
-        
+
             <div id="paginacao"></div>
+
+            <section id="form-atividade" hidden>
+                <h2>Crie sua atividade</h2>
+                <form id="form-criar" novalidate>
+                    <label for="atv-tipo">Tipo de atividade</label>
+                    <input id="atv-tipo" type="text" placeholder="corrida, caminhada ou trilha">
+                    <span class="erro"></span>
+
+                    <label for="atv-distancia">Distância (metros)</label>
+                    <input id="atv-distancia" type="number" placeholder="Ex: 5000">
+                    <span class="erro"></span>
+
+                    <label for="atv-duracao">Duração (minutos)</label>
+                    <input id="atv-duracao" type="number" placeholder="Ex: 30">
+                    <span class="erro"></span>
+
+                    <button type="submit">Criar Atividade</button>
+                </form>
+            </section>
         </main>
     </div>
 
     <footer>
+        <span>SAEPSaúde</span>
+        <img src="./img/instagram.svg" alt="Instagram">
+        <img src="./img/twitter.svg" alt="Twitter">
+        <img src="./img/tiktok.svg" alt="TikTok">
+        <span>Copyright-2024</span>
     </footer>
+
+    <div id="modal-login" hidden>
+        <form id="form-login" novalidate>
+            <button type="button" id="fechar-login"><img src="img/x.svg" alt="fechar"></button>
+            <label for="login-email">E-mail</label>
+            <input id="login-email" type="email">
+            <label for="login-senha">Senha</label>
+            <input id="login-senha" type="password">
+            <p id="login-erro" class="erro"></p>
+            <div>
+                <button type="button" id="cancelar-login">Cancelar</button>
+                <button type="submit" id="confirmar-login">Login</button>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>

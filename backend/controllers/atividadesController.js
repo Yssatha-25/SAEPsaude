@@ -126,5 +126,6 @@ const criar = async (req, res) => {
 };
 
 module.exports = {
-    atividades
+    atividades,
+    criar
 };
