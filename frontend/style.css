@@ -6,12 +6,19 @@
     align-content: center;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 [hidden] {
     display: none !important;
 }
 
 #conteudo {
     display: flex;
+    flex: 1;
 }
 
 #cabecalho {
@@ -21,7 +28,7 @@
     height: 16vh;
     display: flex;
     padding: 2vw;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -52,7 +59,7 @@ aside {
     background-color: #333333;
     color: #FFFFFF;
     padding: 2vw;
-    width: 25vw;
+    width: 20vw;
     flex-shrink: 0;
     display: grid;
     row-gap: 20vh;
@@ -81,13 +88,27 @@ aside {
     color: #FFFFFF;
     border: none;
     border-radius: 5px;
-    width: 15vw;
+    width: 100%;
     height: 7vh;
     cursor: pointer;
 }
 
 #perfil-btn-criar-atvd:hover {
     background-color: #6657ee;
+}
+
+#empresa-logo {
+    max-width: 10vw;
+}
+
+#fechar-login img {
+    width: 16px;
+    height: 16px;
+}
+#fechar-login{
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 main {
@@ -104,23 +125,26 @@ main {
     background-color: #333333;
     color: #FFFFFF;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 2vw;
     border-radius: 5px;
-    max-width: 80vw;
     width: 100%;
 }
 
 .conteudo-post {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;   
     text-align: center;
     gap: 1vh;
     flex-grow: 1;
 }
 
+.foto-perfil-post{
+    text-align: center;
+}
 .foto-perfil-post>img {
     border-radius: 200px;
     max-width: 8vw;
@@ -142,7 +166,11 @@ main {
     display: flex;
     justify-content: flex-end;
     gap: 1vw;
-    align-self: flex-end;
+}
+
+.area-info-post{
+    display: flex;
+    gap: 50px;
 }
 
 
@@ -202,7 +230,8 @@ main {
 }
 
 .btn-curtir,
-.btn-comentar {
+.btn-comentar,
+.btn-enviar{
     background: none;
     border: none;
     color: #FFFFFF;
@@ -239,7 +268,6 @@ main {
 }
 
 .area-comentario {
-    width: 100%;
     display: flex;
     gap: 1vw;
     margin-top: 2vh;
@@ -249,6 +277,7 @@ main {
 .area-comentario input {
     flex: 1;
     padding: 1vh;
+    width: 40vw;
 }
 
 #modal-login {
@@ -258,6 +287,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#botoes-modal-login{
+    display: flex;
+    border: none;
+    justify-content: space-between;
 }
 
 #form-login {
@@ -271,13 +306,26 @@ main {
 
 #cancelar-login {
     background: none;
-    border: 1px solid #333333;
+    color: #483DAD;
+    border: 1px solid #483DAD;
+    border-radius: 5px;
+    width: 8vw;
+    cursor: pointer;
 }
 
 #confirmar-login {
-    background: #333333;
+    background: #483DAD;
     color: #FFFFFF;
     border: none;
+    border-radius: 5px;
+    width: 8vw;
+    cursor: pointer;
+}
+
+#cancelar-login:hover,
+#confirmar-login:hover{
+    background: #6657ee;
+    color: #FFFFFF;
 }
 
 input.invalido {
@@ -307,8 +355,13 @@ input.invalido {
     background: #333333;
     color: #FFFFFF;
     border: none;
+    border-radius: 5px;
     padding: 2vh;
+    width: 15vw;
     cursor: pointer;
+}
+#form-criar button:hover{
+    background: #4e4e4e;
 }
 
 #paginacao>button:disabled {
@@ -316,10 +369,17 @@ input.invalido {
     cursor: not-allowed;
 }
 
-
 footer {
     background-color: #000000;
     color: #FFFFFF;
-    padding: 10vh 0;
-    max-height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw    ;
+    padding: 3vh 2vw;
+}
+
+footer img {
+    width: 24px;
+    height: 24px;
 }

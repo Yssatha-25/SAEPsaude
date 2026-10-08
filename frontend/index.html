@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <button id="perfil-btn-criar-atvd" disabled>Atividades</button>
+            <button id="perfil-btn-criar-atvd" hidden>Atividades</button>
         </aside>
 
         <main>
@@ -47,6 +47,10 @@
                 <button data-tipo="corrida">Corrida</button>
                 <button data-tipo="caminhada">Caminhada</button>
                 <button data-tipo="trilha">Trilha</button>
+                <button data-tipo="ciclismo">Ciclismo</button>
+                <button data-tipo="natacao">Natação</button>
+                <button data-tipo="musculacao">Musculação</button>
+                <button data-tipo="futebol">Futebol</button>
             </div>
 
             <div id="lista-atividades"></div>
@@ -57,7 +61,15 @@
                 <h2>Crie sua atividade</h2>
                 <form id="form-criar" novalidate>
                     <label for="atv-tipo">Tipo de atividade</label>
-                    <input id="atv-tipo" type="text" placeholder="corrida, caminhada ou trilha">
+                    <select id="atv-tipo" placeholder="selecione uma atividade">
+                        <option value="corrida">Corrida</option>
+                        <option value="caminhada">Caminhada</option>
+                        <option value="trilha">Trilha</option>
+                        <option value="ciclismo">Ciclismo</option>
+                        <option value="natacao">Natação</option>
+                        <option value="msuculacao">Musculação</option>
+                        <option value="futebol">Futebol</option>
+                    </select>
                     <span class="erro"></span>
 
                     <label for="atv-distancia">Distância (metros)</label>
@@ -69,6 +81,7 @@
                     <span class="erro"></span>
 
                     <button type="submit">Criar Atividade</button>
+                    <button id="cancelar-criacao-atvd">Cancelar</button>
                 </form>
             </section>
         </main>
@@ -84,13 +97,13 @@
 
     <div id="modal-login" hidden>
         <form id="form-login" novalidate>
-            <button type="button" id="fechar-login"><img src="img/x.svg" alt="fechar"></button>
+            <button type="button" id="fechar-login"><img src="img/close.svg" alt="fechar"></button>
             <label for="login-email">E-mail</label>
             <input id="login-email" type="email">
             <label for="login-senha">Senha</label>
             <input id="login-senha" type="password">
             <p id="login-erro" class="erro"></p>
-            <div>
+            <div id="botoes-modal-login">
                 <button type="button" id="cancelar-login">Cancelar</button>
                 <button type="submit" id="confirmar-login">Login</button>
             </div>

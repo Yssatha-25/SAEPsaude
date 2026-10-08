@@ -59,25 +59,30 @@ function criarCardHtml(a) {
     const horas = (Number(a.duracao_min) / 60).toFixed(2);
     return `
         <div class="card-post" data-id="${a.id_atividade}">
-            <div class="foto-perfil-post">
-                <img src="${escapeHtml(a.foto_usuario)}" alt="foto de ${escapeHtml(a.nome_usuario)}">
+            <div class="area-info-post">
+                <div class="foto-perfil-post">
+                    <img src="${escapeHtml(a.foto_usuario)}" alt="foto de ${escapeHtml(a.nome_usuario)}">
+                </div>
+
+                <div class="conteudo-post">
+                    <p><strong>${escapeHtml(a.tipo_atividade)}</strong></p>
+                    <p>${escapeHtml(a.nome_usuario)}</p>
+                    <ul>
+                        <li>${km} km</li>
+                        <li>${horas} h</li>
+                        <li>${a.calorias} kcal</li>
+                        <li>${a.data_atividade}</li>
+                    </ul>
+                </div>
+
+                <div class="coments-likes-post">
+                        <button class="btn-curtir"><span class="icone-curtida ${a.curtiu ? "curtido" : ""}"></span>
+                            <span class="qtd-curtidas">${Number(a.total_curtidas)}</span></button>
+                        <button class="btn-comentar"><span class="icone-comentario"></span>
+                            <span class="qtd-comentarios">${Number(a.total_comentarios)}</span></button>
+                </div>
             </div>
-            <div class="conteudo-post">
-                <p><strong>${escapeHtml(a.tipo_atividade)}</strong></p>
-                <p>${escapeHtml(a.nome_usuario)}</p>
-                <ul>
-                    <li>${km} km</li>
-                    <li>${horas} h</li>
-                    <li>${a.calorias} kcal</li>
-                    <li>${a.data_atividade}</li>
-                </ul>
-            </div>
-            <div class="coments-likes-post">
-                <button class="btn-curtir"><span class="icone-curtida ${a.curtiu ? "curtido" : ""}"></span>
-                    <span class="qtd-curtidas">${Number(a.total_curtidas)}</span></button>
-                <button class="btn-comentar"><span class="icone-comentario"></span>
-                    <span class="qtd-comentarios">${Number(a.total_comentarios)}</span></button>
-            </div>
+
             <div class="area-comentario" hidden>
                 <input type="text" placeholder="Escrever um comentário...">
                 <button class="btn-enviar"><img src="img/send.svg" alt="enviar" width="20"></button>
@@ -220,7 +225,7 @@ function configurarInteracoes() {
 async function atualizarPerfil() {
     const empresa = await buscarEmpresa();
     if (!empresa) return;
-    document.getElementById("empresa-logo").src = empresa.logo;
+    document.getElementById("empresa-logo").src = "./img/logo.png";
     document.getElementById("empresa-nome").textContent = empresa.nome;
     document.getElementById("total-atividades").textContent = empresa.total_atividades;
     document.getElementById("total-calorias").textContent = empresa.total_calorias;
@@ -234,12 +239,11 @@ async function atualizarInterface() {
     btn.textContent = usuarioLogado ? "Logout" : "Login";
     btn.classList.toggle("logado", !!usuarioLogado);
     info.hidden = !usuarioLogado;
-    btnAtv.disabled = !usuarioLogado;
-    btnAtv.classList.remove("ativo");
 
     if (usuarioLogado) {
         document.getElementById("perfil-nome").textContent = usuarioLogado.nome;
         document.getElementById("perfil-foto").src = usuarioLogado.foto;
+        btnAtv.hidden = false
     }
     mostrarLista();
     await atualizarPerfil();
@@ -314,8 +318,6 @@ function configurarFormAtividade() {
     const form = document.getElementById("form-criar");
 
     btnAtv.addEventListener("click", () => {
-        if (!exigirLogin()) return;
-        btnAtv.classList.add("ativo"); // no CSS: #perfil-btn-criar-atvd.ativo { background-color:#483DAD; }
         document.getElementById("filtros").hidden = true;
         document.getElementById("lista-atividades").hidden = true;
         document.getElementById("paginacao").hidden = true;
@@ -337,11 +339,6 @@ function configurarFormAtividade() {
             if (vazio) valido = false;
         });
 
-        if (valido && !["corrida", "caminhada", "trilha"].includes(tipo.value.trim().toLowerCase())) {
-            tipo.classList.add("invalido");
-            tipo.nextElementSibling.textContent = "Use apenas corrida, caminhada ou trilha";
-            valido = false;
-        }
         if (!valido) return;
 
         const resp = await fetch(`${API_URL}/atividades`, {
